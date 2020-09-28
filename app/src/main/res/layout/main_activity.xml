@@ -21,14 +21,80 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_marginTop="20dp">
+
         <EditText
             android:id="@+id/word"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="268dp"
+            android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:hint="请输入查询单词"
             android:imeOptions="actionSearch"
-            android:singleLine="true"/>
-
+            android:singleLine="true" />
+        <TextView
+            android:id="@+id/find"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="搜索"
+            android:textSize="20sp" />
         </LinearLayout>
-</LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        >
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp"
+            >
+            <TextView
+                android:id="@+id/ago"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="left|center_vertical"
+                android:text="搜索历史"
+                />
+            <com.example.wordsbook.view_History
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        </LinearLayout>
+            <TextView
+                android:id="@+id/clear"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="#F6F6F6"
+                android:gravity="center"
+                android:text="清除搜索历史" />
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/result"
+            android:gravity="center"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/meaning"
+            android:gravity="center"
+            />
+
+    </LinearLayout>
+    </LinearLayout>
