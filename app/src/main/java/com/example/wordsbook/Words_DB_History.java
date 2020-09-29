@@ -7,9 +7,9 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-public class Words_History_DB extends SQLiteOpenHelper {
+public class Words_DB_History extends SQLiteOpenHelper {
     private String CREATE_AGO_TABLE="create table words_ago(_id integer primary key autoincrement,word_ago varchar(200))";
-    public Words_History_DB(@Nullable Context context) {
+    public Words_DB_History(@Nullable Context context) {
         super(context,"record_db",null,2);
     }
 
