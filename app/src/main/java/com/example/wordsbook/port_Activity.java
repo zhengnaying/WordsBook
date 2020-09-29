@@ -69,11 +69,23 @@ public class port_Activity extends AppCompatActivity implements TextToSpeech.OnI
                 dialog.show();
                 break;
             case(R.id.help):
-                Toast.makeText(this,"这是帮助键"，Toast.LENGTH_SHORT).show();;
+                Toast.makeText(this,"这是帮助键",Toast.LENGTH_SHORT).show();;
                 break;
-
+            case R.id.exit:
+                AlertDialog.Builder builder=new AlertDialog.Builder(this);
+                builder.setTitle("友情提示");
+                builder.setMessage("您确定要退出吗？");
+                builder.setPositiveButton("退出", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                });
+                builder.setNegativeButton("取消",null);
+                builder.show();
+                break;
         }
-
+        return true;
     }
 
 
@@ -81,6 +93,20 @@ public class port_Activity extends AppCompatActivity implements TextToSpeech.OnI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_port_);
+        textToSpeech = new TextToSpeech(this,this);
+
+        initView();
+        initData();
+        initListener();
+    }
+
+    private void initListener() {
+    }
+
+    private void initData() {
+    }
+
+    private void initView() {
     }
 
     @Override
