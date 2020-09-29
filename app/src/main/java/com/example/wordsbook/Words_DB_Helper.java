@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-public class wordsDB extends SQLiteOpenHelper {
+public class Words_DB_Helper extends SQLiteOpenHelper {
 
     private String SQL_CREATE_DATABASE="create table words ("+
             "_id integer primary key autoincrement,"+
@@ -16,7 +16,7 @@ public class wordsDB extends SQLiteOpenHelper {
             "sample TEXT)";
     private Context mContext;
 
-    public wordsDB(@Nullable Context context) {
+    public Words_DB_Helper(@Nullable Context context) {
         super(context, "dictionary_db", null, 1);
         this.mContext = context;
     }
