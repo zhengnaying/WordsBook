@@ -37,7 +37,7 @@
             android:gravity="center"
             android:text="搜索"
             android:textSize="20sp" />
-        </LinearLayout>
+    </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="250dp"
@@ -47,25 +47,25 @@
             android:layout_width="match_parent"
             android:orientation="vertical"
             >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="30dp"
-            >
-            <TextView
-                android:id="@+id/ago"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:gravity="left|center_vertical"
-                android:text="搜索历史"
-                />
-            <com.example.wordsbook.view_History
-            android:id="@+id/listView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-        </LinearLayout>
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="30dp"
+                >
+                <TextView
+                    android:id="@+id/ago"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="left|center_vertical"
+                    android:text="搜索历史"
+                    />
+                <com.example.wordsbook.view_History
+                    android:id="@+id/listView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
             <TextView
                 android:id="@+id/clear"
                 android:layout_width="match_parent"
@@ -97,4 +97,4 @@
             />
 
     </LinearLayout>
-    </LinearLayout>
+</LinearLayout>
