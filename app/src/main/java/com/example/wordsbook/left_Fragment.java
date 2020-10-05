@@ -11,6 +11,7 @@ import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
@@ -66,7 +67,7 @@ public class left_Fragment extends Fragment implements TextToSpeech.OnInitListen
         db_helper = new Words_DB_Helper(this.getActivity());
         db_history = new Words_DB_History(this.getActivity());
         cursor = db_history.getReadableDatabase().rawQuery("select * from words_history ", null);
-
+        adapter =  new SimpleCursorAdapter(this.getActivity(),android.R.layout.simple_list_item_1,cursor,new String[]{"word_history"}, new int[]{android.R.id.text1}, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
     }
 
     private void initView() {

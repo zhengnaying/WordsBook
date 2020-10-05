@@ -10,7 +10,7 @@
             android:layout_marginTop="10dp"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:id="@+id/text1"
+            android:id="@+id/text"
             android:text="英文-----中文"
             android:gravity="center_horizontal"
             android:textSize="20dp"/>
