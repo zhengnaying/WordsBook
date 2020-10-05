@@ -22,7 +22,13 @@ import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+
+import java.io.IOException;
 import java.util.Objects;
 
 
@@ -144,7 +150,24 @@ public class left_Fragment extends Fragment implements TextToSpeech.OnInitListen
                   meaning_result.setText(mean);
               }
               String utlxml="http://dict-co.iciba.com/api/dictionary.php?w="+word_search+"&key=C2FC88A32BD1979D0535E18BE84219D9";
+             HttpUtil.sendHttpRequest(utlxml, new Callback() {
+                 @Override
+                 public void onFailure(Call call, IOException e) {
+                     Toast.makeText(getActivity(),"获取例句失败", Toast.LENGTH_SHORT).show();
+                 }
 
+                 @Override
+                 public void onResponse(Call call, Response response) throws IOException {
+                     final String result=response.body().string();
+                     getActivity().runOnUiThread(new Runnable() {
+                         @Override
+                         public void run() {
+                             JinshanUtil.parseJinshanEnglishToChineseXMLWithPull(result);
+                         }
+                     });
+
+                 }
+             });
           }
       });
 
