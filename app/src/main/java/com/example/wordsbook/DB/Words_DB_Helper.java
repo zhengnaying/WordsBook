@@ -1,10 +1,12 @@
-package com.example.wordsbook;
+package com.example.wordsbook.DB;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+
+import com.example.wordsbook.Words;
 
 public class Words_DB_Helper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME ="wordsDB";

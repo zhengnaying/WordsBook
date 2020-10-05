@@ -1,4 +1,4 @@
-package com.example.wordsbook;
+package com.example.wordsbook.DB;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
