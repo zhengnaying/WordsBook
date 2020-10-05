@@ -2,5 +2,5 @@ package com.example.wordsbook;
 
 import android.app.Activity;
 
-public class WordDetalActivity extends Activity {
+public class WordDetailActivity extends Activity {
 }
