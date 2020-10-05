@@ -1,7 +1,9 @@
 package com.example.wordsbook.DB;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.strictmode.SqliteObjectLeakedViolation;
 import android.util.Log;
 
 import com.example.wordsbook.GUID;
@@ -81,8 +83,55 @@ public class WordsDB {
 
     //使用insert方法增加单词
     public void Insert(String strWord, String strMeaning, String strSample){
-
+      SQLiteDatabase db = db_Helper.getReadableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(Words.Word._ID,GUID.getGUID());
+        values.put(Words.Word.COLUMN_NAME_WORD,strWord);
+        values.put(Words.Word.COLUMN_NAME_MEANING,strMeaning);
+        values.put(Words.Word.COLUMN_NAME_SAMPLE,strSample);
+        long newRowId;
+        newRowId = db.insert(Words.Word.TABLE_NAME,null,values);
     }
 
+    //使用Sql语句删除单词
+    public void DeleteUseSql(String strId) {
+        String sql = "delete from words where _id= '" + strId + "'";
+        SQLiteDatabase db = db_Helper.getReadableDatabase();
+        db.execSQL(sql);
+    }
+
+    //删除单词
+    public void Delete(String strId){
+        SQLiteDatabase db = db_Helper.getReadableDatabase();
+        String selection = Words.Word._ID + " = ?";
+        String[] selectionArgs = {strId};
+        db.delete(Words.Word.TABLE_NAME,selection,selectionArgs);
+    }
+    //使用Sql语句更新单词
+    public void UpdateUseSql(String strId, String strWord, String strMeaning, String strSample){
+        SQLiteDatabase db = db_Helper.getReadableDatabase();
+        String sql = "update words set word=?,meaning=?,sample=? where _id=?";
+        db.execSQL(sql,new String[]{strWord,strMeaning,strSample,strId});
+    }
+
+    //使用方法更新
+    public void Update(String strId, String strWord, String strMeaning, String strSample) {
+        SQLiteDatabase db = db_Helper.getReadableDatabase();
+
+        // New value for one column
+        ContentValues values = new ContentValues();
+        values.put(Words.Word.COLUMN_NAME_WORD, strWord);
+        values.put(Words.Word.COLUMN_NAME_MEANING, strMeaning);
+        values.put(Words.Word.COLUMN_NAME_SAMPLE, strSample);
+
+        String selection = Words.Word._ID + " = ?";
+        String[] selectionArgs = {strId};
+
+        int count = db.update(
+                Words.Word.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+    }
 
 }
