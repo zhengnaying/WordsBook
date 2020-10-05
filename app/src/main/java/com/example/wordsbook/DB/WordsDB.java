@@ -16,5 +16,9 @@ public class WordsDB {
             db_Helper = new Words_DB_Helper(WordsApplication.getContext());
     }
 
-
+   public void close(){
+        if(db_Helper != null){
+            db_Helper.close();
+        }
+   }
 }
