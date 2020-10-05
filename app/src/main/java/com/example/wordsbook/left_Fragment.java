@@ -1,5 +1,6 @@
 package com.example.wordsbook;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -8,13 +9,18 @@ import androidx.fragment.app.Fragment;
 
 import android.speech.tts.TextToSpeech;
 import android.view.ContextMenu;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Adapter;
 import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+
+import java.util.Objects;
 
 
 public class left_Fragment extends Fragment implements TextToSpeech.OnInitListener{
@@ -60,6 +66,41 @@ public class left_Fragment extends Fragment implements TextToSpeech.OnInitListen
     }
 
     private void initListener() {
+        //清除历史记录
+        clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteHistory();
+            }
+        });
+        find.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((InputMethodManager) Objects.requireNonNull(getActivity()).getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                insertHistory(word_input.getText().toString().trim());
+            }
+        });//搜索保存搜索记录
+        word_input.setOnKeyListener(new View.OnKeyListener(){
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                if (i == KeyEvent.KEYCODE_ENTER && keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
+                    //隐藏键盘
+                    ((InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE))
+                            .hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                    //保存搜索记录
+                    insertHistory(word_input.getText().toString().trim());
+                }
+                return false;
+            }
+        });
+
+
+    }
+
+    private void insertHistory(String insert) {
+    }
+
+    private void deleteHistory() {
     }
 
     //获取历史记录
@@ -68,6 +109,7 @@ public class left_Fragment extends Fragment implements TextToSpeech.OnInitListen
         db_history = new Words_DB_History(this.getActivity());
         cursor = db_history.getReadableDatabase().rawQuery("select * from words_history ", null);
         adapter =  new SimpleCursorAdapter(this.getActivity(),android.R.layout.simple_list_item_1,cursor,new String[]{"word_history"}, new int[]{android.R.id.text1}, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+        list_view.setAdapter(adapter);
     }
 
     private void initView() {
