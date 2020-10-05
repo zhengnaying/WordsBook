@@ -1,6 +1,7 @@
 package com.example.wordsbook;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -30,6 +31,8 @@ import okhttp3.Response;
 
 import java.io.IOException;
 import java.util.Objects;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 public class left_Fragment extends Fragment implements TextToSpeech.OnInitListener{
@@ -163,11 +166,22 @@ public class left_Fragment extends Fragment implements TextToSpeech.OnInitListen
                          @Override
                          public void run() {
                              JinshanUtil.parseJinshanEnglishToChineseXMLWithPull(result);
+                             SharedPreferences pref=getActivity().getSharedPreferences("JinshanEnglishToChinese",MODE_PRIVATE);
+                             sample=pref.getString("exampleText","空");
                          }
                      });
-
                  }
              });
+              pron_result.setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      textToSpeech.speak(change_word,TextToSpeech.QUEUE_FLUSH,null);
+
+                  }
+              });
+              TextView sample_View=getActivity().findViewById(R.id.sample_view);
+              sample_View.setText(sample);
+              sample_View.setVisibility(View.VISIBLE);
           }
       });
 
