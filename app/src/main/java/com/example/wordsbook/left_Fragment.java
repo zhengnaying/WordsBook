@@ -143,6 +143,8 @@ public class left_Fragment extends Fragment implements TextToSpeech.OnInitListen
                   pron_result.setText("["+pron+"]");
                   meaning_result.setText(mean);
               }
+              String utlxml="http://dict-co.iciba.com/api/dictionary.php?w="+word_search+"&key=C2FC88A32BD1979D0535E18BE84219D9";
+
           }
       });
 
