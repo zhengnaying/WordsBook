@@ -1,4 +1,4 @@
-package com.example.wordsbook;
+package com.example.wordsbook.ui.main;
 
 import android.provider.BaseColumns;
 

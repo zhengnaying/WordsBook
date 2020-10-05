@@ -3,12 +3,11 @@ package com.example.wordsbook.DB;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.strictmode.SqliteObjectLeakedViolation;
 import android.util.Log;
 
-import com.example.wordsbook.GUID;
-import com.example.wordsbook.Words;
-import com.example.wordsbook.WordsApplication;
+import com.example.wordsbook.ui.main.GUID;
+import com.example.wordsbook.ui.main.Words;
+import com.example.wordsbook.ui.main.WordsApplication;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -134,4 +133,22 @@ public class WordsDB {
                 selectionArgs);
     }
 
+    //使用Sql语句查找
+    public ArrayList<Map<String, String>> SearchUseSql(String strWordSearch){
+        SQLiteDatabase db = db_Helper.getReadableDatabase();
+        String sql = "select * from words where word like ? order by word desc";
+        Cursor c = db.rawQuery(sql, new String[]{"%" + strWordSearch + "%"});
+        return ConvertCursorWordList(c);
+    }
+
+    //使用query方法查找
+    public ArrayList<Map<String, String>> Search(String strWordSearch){
+        SQLiteDatabase db = db_Helper.getReadableDatabase();
+        String[] projection = {Words.Word._ID, Words.Word.COLUMN_NAME_WORD};
+        String sortOrder = Words.Word._ID + " DESC";
+        String selection = Words.Word._ID + " LIKE ?";
+        String[] selectionArgs = {"%" + strWordSearch + "%"};
+        Cursor c = db.query(Words.Word.TABLE_NAME,projection,selection,selectionArgs,null,null,sortOrder);
+        return ConvertCursorWordList(c);
+    }
 }

@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
-import com.example.wordsbook.ui.main.MainFragment;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
