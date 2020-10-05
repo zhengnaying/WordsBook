@@ -8,6 +8,8 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.speech.tts.TextToSpeech;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.ContextMenu;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -15,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.SimpleCursorAdapter;
@@ -26,7 +29,7 @@ import java.util.Objects;
 public class left_Fragment extends Fragment implements TextToSpeech.OnInitListener{
 
     EditText word_input;
-    TextView find,history,clear,meaning,result;
+    TextView find,history,clear,meaning_result,pron_result;
     view_History list_view;
     Words_DB_Helper db_helper;
     Words_DB_History db_history;
@@ -93,8 +96,59 @@ public class left_Fragment extends Fragment implements TextToSpeech.OnInitListen
                 return false;
             }
         });
+      word_input.addTextChangedListener(new TextWatcher() {
+          @Override
+          public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+          }
 
+          @Override
+          public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+          }
+
+          @Override
+          public void afterTextChanged(Editable s) {
+              if(word_input.getText().toString().equals("")){
+                  history.setText("搜索历史");
+                  clear.setVisibility(View.VISIBLE);
+                  cursor=db_history.getReadableDatabase().rawQuery("select * from words_history",null);
+                  adapter =  new SimpleCursorAdapter(getActivity(),android.R.layout.simple_list_item_1,cursor,new String[]{"word_history"}, new int[]{android.R.id.text1}, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+                  list_view.setAdapter(adapter);
+                  meaning_result.setText("");
+                  pron_result.setText("");
+              }
+              else {
+                  history.setText("搜索结果");
+                  clear.setVisibility(View.GONE);
+                  String search=word_input.getText().toString();
+                  search_result(search);
+              }
+          }
+      });
+      list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+          @Override
+          public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+              String word_search = ((TextView)view.findViewById(android.R.id.text1)).getText().toString();
+              del_word=word_search;
+              change_word = word_search;
+              Cursor cursor_result;
+              cursor_result = db_helper.getReadableDatabase().rawQuery("select * from words where word=?",new String[]{word_search});
+              if(cursor_result.getCount()!=0){
+                  cursor_result.moveToNext();
+                  String mean = "";
+                  String pron="";
+                  mean = cursor_result.getString(cursor_result.getColumnIndex("meaning"));
+                  pron=cursor_result.getString(cursor_result.getColumnIndex("pronunciation"));
+                  pron_result.setText("["+pron+"]");
+                  meaning_result.setText(mean);
+              }
+          }
+      });
+
+    }
+
+    private void search_result(String search) {
     }
 
     private void insertHistory(String insert) {
@@ -118,8 +172,8 @@ public class left_Fragment extends Fragment implements TextToSpeech.OnInitListen
         history = view.findViewById(R.id.history);
         clear = view.findViewById(R.id.clear);
         list_view = view.findViewById(R.id.listView);
-        meaning=view.findViewById(R.id.meaning);
-        result=view.findViewById(R.id.result);
+        meaning_result=view.findViewById(R.id.meaning);
+        pron_result=view.findViewById(R.id.pron_result);
     }
 
     @Override

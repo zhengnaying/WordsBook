@@ -82,7 +82,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/result"
+            android:id="@+id/pron_result"
             android:gravity="center"
             android:drawableBottom="@drawable/pron_logo"
             android:visibility="invisible"

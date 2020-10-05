@@ -86,7 +86,7 @@
         android:layout_height="100dp">
         <TextView
             android:clickable="true"
-            android:id="@+id/result"
+            android:id="@+id/pron_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="invisible"
