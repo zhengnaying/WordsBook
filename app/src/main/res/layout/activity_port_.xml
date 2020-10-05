@@ -10,7 +10,7 @@
             android:layout_marginTop="10dp"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:id="@+id/view"
+            android:id="@+id/text1"
             android:text="英文-----中文"
             android:gravity="center_horizontal"
             android:textSize="20dp"/>
@@ -24,8 +24,9 @@
 
         <EditText
             android:id="@+id/word"
-            android:layout_width="268dp"
+            android:layout_width="310dp"
             android:layout_height="match_parent"
+            android:drawableStart="@android:drawable/ic_menu_search"
             android:gravity="center_vertical"
             android:hint="请输入查询单词"
             android:imeOptions="actionSearch"
@@ -54,7 +55,7 @@
                 android:layout_marginLeft="30dp"
                 >
                 <TextView
-                    android:id="@+id/ago"
+                    android:id="@+id/history"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:gravity="left|center_vertical"
@@ -83,6 +84,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/result"
             android:gravity="center"
+            android:drawableBottom="@drawable/pron_logo"
+            android:visibility="invisible"
             />
     </LinearLayout>
     <LinearLayout
