@@ -18,10 +18,10 @@
             android:layout_marginTop="100dp"/>
         <TextView android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/wordmeaning"/>
+            android:id="@+id/meaning"/>
         <TextView android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/wordsample"/>
+            android:id="@+id/sample"/>
     </LinearLayout>
 
 </FrameLayout>

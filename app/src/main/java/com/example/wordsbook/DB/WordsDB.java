@@ -21,7 +21,7 @@ public class WordsDB {
     public static WordsDB getWordsDB() {
         return WordsDB.instance;
     }
-    private WordsDB(){
+    public WordsDB(){
         if(db_Helper == null)
             db_Helper = new Words_DB_Helper(WordsApplication.getContext());
     }

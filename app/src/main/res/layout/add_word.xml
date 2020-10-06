@@ -10,7 +10,7 @@
         <EditText
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:id="@+id/word"
+            android:id="@+id/addword"
             android:hint="输入单词"
             />
     </LinearLayout>
@@ -21,7 +21,7 @@
         <EditText
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:id="@+id/pronunciation"
+            android:id="@+id/addpronunciation"
             android:hint="输入读音"
             />
     </LinearLayout>
@@ -32,7 +32,7 @@
         <EditText
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:id="@+id/meaning"
+            android:id="@+id/addmeaning"
             android:hint="输入中文翻译"
             />
     </LinearLayout>
@@ -43,7 +43,7 @@
         <EditText
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:id="@+id/sample"
+            android:id="@+id/addsample"
             android:hint="输入例句"
             />
     </LinearLayout>
