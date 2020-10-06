@@ -5,8 +5,6 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.ListFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +17,6 @@ import com.example.wordsbook.R;
 import com.example.wordsbook.ui.main.Words;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class WordItem_Fragment extends ListFragment {
