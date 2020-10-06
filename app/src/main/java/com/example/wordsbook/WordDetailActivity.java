@@ -27,6 +27,14 @@ public class WordDetailActivity extends AppCompatActivity implements WordDetail_
             return;
         }
 
+        if(savedInstanceState == null){
+            WordDetail_Fragment detail_fragment = new WordDetail_Fragment();
+            detail_fragment.setArguments(getIntent().getExtras());
+            getFragmentManager().beginTransaction()
+                                .add(android.R.id.content,detail_fragment)
+                                .commit();
+        }
+
 
     }
 }
