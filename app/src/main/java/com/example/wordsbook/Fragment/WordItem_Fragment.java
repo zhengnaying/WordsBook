@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 
+import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -84,10 +86,39 @@ public class WordItem_Fragment extends ListFragment {
         View itemView = null;
 
         switch (item.getItemId()){
+            case R.id.action_delete:
+                //删除单词
+                info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+                itemView = info.targetView;
+                textId = (TextView) itemView.findViewById(R.id.textId);
+                if (textId != null) {
+                    String strId = textId.getText().toString();
+                    mListener.onDeleteDialog(strId);
+                }
+                break;
+            case R.id.action_update:
+                //修改单词
+                info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+                itemView = info.targetView;
+                textId = (TextView) itemView.findViewById(R.id.textId);
 
+                if (textId != null) {
+                    String strId = textId.getText().toString();
+
+                    mListener.onUpdateDialog(strId);
+                }
+                break;
         }
-
+        return true;
     }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        Log.v(TAG, "WordItemFragment::onCreateContextMenu()");
+        super.onCreateContextMenu(menu, v, menuInfo);
+        getActivity().getMenuInflater().inflate(R.menu.contextmenu, menu);
+    }
+
 
     //更新单词列表，从数据库中找到所有单词，然后在列表中显示出来
     public void refreshWordsList(){
