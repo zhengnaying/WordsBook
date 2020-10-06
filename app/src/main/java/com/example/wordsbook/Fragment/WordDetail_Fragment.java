@@ -1,8 +1,10 @@
 package com.example.wordsbook.Fragment;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.wordsbook.DB.WordsDB;
 import com.example.wordsbook.R;
+import com.example.wordsbook.ui.main.Words;
 
 
 public class WordDetail_Fragment extends Fragment {
@@ -25,6 +28,12 @@ public class WordDetail_Fragment extends Fragment {
 
     public WordDetail_Fragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        mListener = (OnFragmentInteractionListener)getActivity();
     }
 
 
@@ -57,11 +66,33 @@ public class WordDetail_Fragment extends Fragment {
             TextView textViewWord = (TextView)view.findViewById(R.id.word);
             TextView textViewMeaning = (TextView)view.findViewById(R.id.meaning);
             TextView textViewSample = (TextView) view.findViewById(R.id.sample);
+
+            Words.WordDecription item = wordsDB.getSingleWord(mID);
+            if(item != null){
+                textViewWord.setText(item.word);
+                textViewMeaning.setText(item.meaning);
+                textViewSample.setText(item.sample);
+            }
+            else{
+                textViewWord.setText("");
+                textViewMeaning.setText("");
+                textViewSample.setText("");
+            }
         }
 
         return view;
     }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    public void onButtonPressed(Uri uri){
+        if(mListener!= null)
+            mListener.onWordDetailClick(uri);
+    }
     public interface OnFragmentInteractionListener{
         public void onWordDetailClick(Uri uri);
     }
