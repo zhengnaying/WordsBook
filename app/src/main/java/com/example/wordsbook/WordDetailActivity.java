@@ -30,9 +30,10 @@ public class WordDetailActivity extends AppCompatActivity implements WordDetail_
         if(savedInstanceState == null){
             WordDetail_Fragment detail_fragment = new WordDetail_Fragment();
             detail_fragment.setArguments(getIntent().getExtras());
-            getFragmentManager().beginTransaction()
-                                .add(android.R.id.content,detail_fragment)
-                                .commit();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.wordslist,detail_fragment)
+                    .commit();
         }
 
 

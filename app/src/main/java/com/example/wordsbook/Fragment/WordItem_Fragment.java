@@ -1,10 +1,11 @@
 package com.example.wordsbook.Fragment;
 
-import android.app.ListFragment;
+
 import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.ListFragment;
 
 import android.util.Log;
 import android.view.ContextMenu;
@@ -24,6 +25,7 @@ import com.example.wordsbook.ui.main.Words;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Objects;
 
 public class WordItem_Fragment extends ListFragment {
     private static final String TAG = "Tag";
@@ -58,7 +60,7 @@ public class WordItem_Fragment extends ListFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = super.onCreateView(inflater,container,savedInstanceState);
@@ -113,10 +115,10 @@ public class WordItem_Fragment extends ListFragment {
     }
 
     @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+    public void onCreateContextMenu(@NonNull ContextMenu menu, @NonNull View v, ContextMenu.ContextMenuInfo menuInfo) {
         Log.v(TAG, "WordItemFragment::onCreateContextMenu()");
         super.onCreateContextMenu(menu, v, menuInfo);
-        getActivity().getMenuInflater().inflate(R.menu.contextmenu, menu);
+        Objects.requireNonNull(getActivity()).getMenuInflater().inflate(R.menu.contextmenu, menu);
     }
 
 
@@ -147,7 +149,7 @@ public class WordItem_Fragment extends ListFragment {
 
 
 
-    public void onListItemClick(ListView l,View v ,int position,long id){
+    public void onListItemClick(@NonNull ListView l, @NonNull View v , int position, long id){
         super.onListItemClick(l,v,position,id);
 
         if(mListener!= null){
