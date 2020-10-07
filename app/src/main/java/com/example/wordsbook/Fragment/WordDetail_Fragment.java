@@ -27,9 +27,7 @@ public class WordDetail_Fragment extends Fragment {
     private OnFragmentInteractionListener mListener;//本Fragment所在的Activity
 
 
-    public WordDetail_Fragment() {
-        // Required empty public constructor
-    }
+
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -37,7 +35,9 @@ public class WordDetail_Fragment extends Fragment {
         mListener = (OnFragmentInteractionListener)getActivity();
     }
 
-
+    public WordDetail_Fragment() {
+        // Required empty public constructor
+    }
     // TODO: Rename and change types and number of parameters
     public static WordDetail_Fragment newInstance(String wordId) {
         WordDetail_Fragment fragment = new WordDetail_Fragment();
@@ -63,7 +63,7 @@ public class WordDetail_Fragment extends Fragment {
         // Inflate the layout for this fragment
         View view =inflater.inflate(R.layout.fragment_word_detail_, container, false);
         WordsDB wordsDB = new WordsDB();
-        if (wordsDB != null && mID!=null){
+        if (mID != null){
             TextView textViewWord = (TextView)view.findViewById(R.id.word);
             TextView textViewMeaning = (TextView)view.findViewById(R.id.meaning);
             TextView textViewSample = (TextView) view.findViewById(R.id.sample);

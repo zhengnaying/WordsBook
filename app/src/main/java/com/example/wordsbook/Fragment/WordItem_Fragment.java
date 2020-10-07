@@ -78,6 +78,12 @@ public class WordItem_Fragment extends ListFragment {
     }
 
     @Override
+    public void onCreateContextMenu(@NonNull ContextMenu menu, @NonNull View v, ContextMenu.ContextMenuInfo menuInfo) {
+        Log.v(TAG, "WordItemFragment::onCreateContextMenu()");
+        super.onCreateContextMenu(menu, v, menuInfo);
+        getActivity().getMenuInflater().inflate(R.menu.contextmenu, menu);
+    }
+    @Override
     public boolean onContextItemSelected(MenuItem item) {
         TextView textId = null;
         TextView textWord = null;
@@ -114,12 +120,7 @@ public class WordItem_Fragment extends ListFragment {
         return true;
     }
 
-    @Override
-    public void onCreateContextMenu(@NonNull ContextMenu menu, @NonNull View v, ContextMenu.ContextMenuInfo menuInfo) {
-        Log.v(TAG, "WordItemFragment::onCreateContextMenu()");
-        super.onCreateContextMenu(menu, v, menuInfo);
-        Objects.requireNonNull(getActivity()).getMenuInflater().inflate(R.menu.contextmenu, menu);
-    }
+
 
 
     //更新单词列表，从数据库中找到所有单词，然后在列表中显示出来

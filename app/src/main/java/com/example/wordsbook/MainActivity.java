@@ -20,6 +20,8 @@ import com.example.wordsbook.Fragment.WordDetail_Fragment;
 import com.example.wordsbook.Fragment.WordItem_Fragment;
 import com.example.wordsbook.ui.main.Words;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity implements WordDetail_Fragment.OnFragmentInteractionListener, WordItem_Fragment.OnFragmentInteractionListener {
 
     private static final String TAG = "Tag";
@@ -27,7 +29,8 @@ public class MainActivity extends AppCompatActivity implements WordDetail_Fragme
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_activity);
+        setContentView(R.layout.content_main);
+
 
     }
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -86,12 +89,12 @@ public class MainActivity extends AppCompatActivity implements WordDetail_Fragme
      */
     private void RefreshWordItemFragment() {
 
-        ((WordItem_Fragment)getSupportFragmentManager().findFragmentById(R.id.wordslist)).refreshWordsList();
+        ((WordItem_Fragment) Objects.requireNonNull(getSupportFragmentManager().findFragmentById(R.id.wordslist))).refreshWordsList();
 
     }
 
     private void RefreshWordItemFragment(String strWord){
-        ((WordItem_Fragment)getSupportFragmentManager().findFragmentById(R.id.wordslist)).refreshWordsList();
+        ((WordItem_Fragment) Objects.requireNonNull(getSupportFragmentManager().findFragmentById(R.id.wordslist))).refreshWordsList(strWord);
     }
 
 
@@ -109,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements WordDetail_Fragme
                         String strSample = ((EditText) tableLayout.findViewById(R.id.addsample)).getText().toString();
                         WordsDB wordsDB=WordsDB.getWordsDB();
                         wordsDB.Insert(strWord, strMeaning, strSample);
-                        RefreshWordItemFragment();
+                        RefreshWordItemFragment(strWord);
                     }
                 })
                 //取消按钮及其动作

@@ -32,7 +32,7 @@ public class WordDetailActivity extends AppCompatActivity implements WordDetail_
             detail_fragment.setArguments(getIntent().getExtras());
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.wordslist,detail_fragment)
+                    .add(android.R.id.content,detail_fragment)
                     .commit();
         }
 
