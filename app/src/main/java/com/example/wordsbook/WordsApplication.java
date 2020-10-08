@@ -1,4 +1,4 @@
-package com.example.wordsbook.ui.main;
+package com.example.wordsbook;
 
 import android.app.Application;
 import android.content.Context;

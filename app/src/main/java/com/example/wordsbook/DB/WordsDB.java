@@ -5,9 +5,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.example.wordsbook.ui.main.GUID;
-import com.example.wordsbook.ui.main.Words;
-import com.example.wordsbook.ui.main.WordsApplication;
+import com.example.wordsbook.GUID;
+import com.example.wordsbook.Words;
+import com.example.wordsbook.WordsApplication;
 
 import java.util.ArrayList;
 import java.util.HashMap;

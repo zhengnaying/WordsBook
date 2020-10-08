@@ -1,4 +1,4 @@
-package com.example.wordsbook.ui.main;
+package com.example.wordsbook;
 
 import java.util.UUID;
 
