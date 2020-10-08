@@ -66,7 +66,7 @@ public class WordsDB {
         ArrayList<Map<String, String>> result = new ArrayList<>();
         while(cursor.moveToNext()){
             Map<String, String> map = new HashMap<>();
-            map.put(Words.Word._ID,String.valueOf(cursor.getColumnIndex(Words.Word._ID)));
+            map.put(Words.Word._ID, String.valueOf(cursor.getString(cursor.getColumnIndex(Words.Word._ID))));
             map.put(Words.Word.COLUMN_NAME_WORD, cursor.getString(cursor.getColumnIndex(Words.Word.COLUMN_NAME_WORD)));
             result.add(map);
         }

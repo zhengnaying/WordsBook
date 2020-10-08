@@ -13,7 +13,7 @@ public class Words_DB_Helper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
    //建表sql
    private final static String SQL_CREATE_DATABASE = "CREATE TABLE " + Words.Word.TABLE_NAME + " (" +
-           Words.Word._ID + " VARCHAR(32) PRIMARY KEY NOT NULL," +
+           Words.Word._ID + " TEXT PRIMARY KEY NOT NULL," +
            Words.Word.COLUMN_NAME_WORD + " TEXT UNIQUE NOT NULL,"+
            Words.Word.COLUMN_NAME_MEANING + " TEXT,"
            + Words.Word.COLUMN_NAME_SAMPLE + " TEXT)";

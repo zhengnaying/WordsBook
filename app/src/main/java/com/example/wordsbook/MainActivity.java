@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements WordDetail_Fragme
                         String strSample = ((EditText) tableLayout.findViewById(R.id.addsample)).getText().toString();
                         WordsDB wordsDB=WordsDB.getWordsDB();
                         wordsDB.Insert(strWord, strMeaning, strSample);
-                        RefreshWordItemFragment(strWord);
+                        RefreshWordItemFragment();
                     }
                 })
                 //取消按钮及其动作

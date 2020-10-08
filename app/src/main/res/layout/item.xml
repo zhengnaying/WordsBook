@@ -13,11 +13,12 @@
     <TextView
         android:id="@+id/textId"
         android:layout_width="50dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Word"
+        android:text="@string/word"
         android:id="@+id/textViewWord"
         android:textSize="@dimen/abc_text_size_title_material" />
 </LinearLayout>
