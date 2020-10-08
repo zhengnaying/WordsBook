@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.example.wordsbook.DB.WordsDB;
 import com.example.wordsbook.Fragment.WordDetail_Fragment;
 import com.example.wordsbook.Fragment.WordItem_Fragment;
-import com.example.wordsbook.ui.main.Words;
+import com.example.wordsbook.Words;
 
 import java.util.Objects;
 

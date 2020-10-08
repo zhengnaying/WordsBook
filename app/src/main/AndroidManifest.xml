@@ -14,9 +14,9 @@
         android:theme="@style/AppTheme">
         <provider
             android:name=".Word_ContentProvider"
-            android:authorities="com.example.wordsbook.word_contentprovider"
+            android:authorities="com.example.wordsbook"
             android:enabled="true"
-            android:exported="true"></provider>
+            android:exported="true" />
 
         <activity android:name=".MainActivity">
             <intent-filter>

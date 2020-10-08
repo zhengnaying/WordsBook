@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.example.wordsbook.DB.WordsDB;
 import com.example.wordsbook.R;
-import com.example.wordsbook.ui.main.Words;
+import com.example.wordsbook.Words;
 
 
 public class WordDetail_Fragment extends Fragment {

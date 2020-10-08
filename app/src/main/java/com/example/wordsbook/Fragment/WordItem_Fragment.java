@@ -21,7 +21,7 @@ import android.widget.Toast;
 
 import com.example.wordsbook.DB.WordsDB;
 import com.example.wordsbook.R;
-import com.example.wordsbook.ui.main.Words;
+import com.example.wordsbook.Words;
 
 import java.util.ArrayList;
 import java.util.Map;
