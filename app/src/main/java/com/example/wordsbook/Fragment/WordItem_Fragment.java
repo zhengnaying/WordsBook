@@ -150,7 +150,7 @@ public class WordItem_Fragment extends ListFragment {
 
 
 
-    public void onListItemClick(@NonNull ListView l, @NonNull View v , int position, Integer id){
+    public void onListItemClick(@NonNull ListView l, @NonNull View v , int position, long id){
         super.onListItemClick(l,v,position,id);
 
         if(mListener!= null){

@@ -15,17 +15,7 @@
             android:layout_height="wrap_content"
             android:hint="输入单词" />
     </TableRow>
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-        <EditText
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/addpronunciation"
-            android:hint="输入读音"
-            />
-    </TableRow>
+
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
