@@ -51,6 +51,15 @@ public class MainActivity extends AppCompatActivity implements WordDetail_Fragme
             case R.id.action_search:
                 SearchDialog();
                 break;
+            case R.id.action_help:
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Help");
+                builder.setMessage("这是帮助键！");
+                builder.setIcon(R.mipmap.ic_launcher);
+                builder.setCancelable(true);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                break;
             default:
                 break;
         }
