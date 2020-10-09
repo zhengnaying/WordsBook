@@ -75,7 +75,7 @@ public class WordsDB {
 
     //使用Sql语句插入单词
     public void InsertUserSql(String strWord, String strMeaning, String strSample) {
-        String sql = "insert into  words(_id,word,meaning,sample) values(?,?,?,?)";
+        String sql = "insert into  words(id,word,meaning,sample) values(?,?,?,?)";
         SQLiteDatabase db = db_Helper.getReadableDatabase();
         db.execSQL(sql,new String[]{GUID.getGUID(),strWord,strMeaning,strSample});
     }

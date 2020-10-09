@@ -11,6 +11,7 @@ import android.net.Uri;
 
 import androidx.annotation.Nullable;
 
+import com.example.wordsbook.DB.WordsDB;
 import com.example.wordsbook.DB.Words_DB_Helper;
 
 public class Word_ContentProvider extends ContentProvider {
@@ -64,9 +65,8 @@ public class Word_ContentProvider extends ContentProvider {
         wordsDBHelper=new Words_DB_Helper(getContext());
         switch (uriMatcher.match(uri)){
             case Table_WORD:
-                long rowID=db.insert(Words.Word.TABLE_NAME, null, values);
-                Uri reUri=ContentUris.withAppendedId(CONTENT_URI, rowID);
-                return reUri;
+                long rowID=db.insert(Words.Word.TABLE_NAME,null,values);
+                return ContentUris.withAppendedId(CONTENT_URI, rowID);
         }
         return null;
         //long id = db.insert(Words.Word.TABLE_NAME, null, values);
