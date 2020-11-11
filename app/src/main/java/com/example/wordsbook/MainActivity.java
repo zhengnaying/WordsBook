@@ -175,7 +175,10 @@ public class MainActivity extends AppCompatActivity implements WordDetail_Fragme
     }
 
     private void DeleteDialog(final String strId) {
-        new AlertDialog.Builder(this).setTitle("删除单词").setMessage("是否真的删除单词?").setPositiveButton("确定", new DialogInterface.OnClickListener() {
+        new AlertDialog.Builder(this)
+                .setTitle("删除单词")
+                .setMessage("是否真的删除单词?")
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 WordsDB wordsDB=WordsDB.getWordsDB();
@@ -206,7 +209,6 @@ public class MainActivity extends AppCompatActivity implements WordDetail_Fragme
         }
 
     }
-
     private void UpdateDialog(final String strId,final String word,final String meaning,final String sample) {
         final TableLayout tableLayout = (TableLayout) getLayoutInflater().inflate(R.layout.add_word, null);
         ((EditText) tableLayout.findViewById(R.id.addword)).setText(word);
